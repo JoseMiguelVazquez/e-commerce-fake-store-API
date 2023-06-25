@@ -19,7 +19,7 @@ const Navbar = () => {
   const fetchUserData = async () => {
     if (userPayload) {
       try {
-        const response = await getSingleUser(userPayload.id)
+        const response = await getSingleUser(userPayload.sub)
         if (response.status === 200) {
           setuserData(response.data)
         }
@@ -110,7 +110,7 @@ const Navbar = () => {
           <ul className='navbar-nav mb-0 mb-lg-0 mx-1'>
             <li className='nav-item dropdown'>
               <NavLink className='nav-link dropdown-toggle' to='#' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
-                Hello, {isAuth ? userData?.first_name : ('log in or sign up')}
+                Hello, {isAuth ? userData?.name?.firstname : ('log in or sign up')}
               </NavLink>
               <ul className='dropdown-menu'>
                 {isAuth

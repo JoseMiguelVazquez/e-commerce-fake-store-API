@@ -18,8 +18,8 @@ const Signup = () => {
   const sendData = async (data) => {
     try {
       const response = await registerUserService(data)
-      if (response.status === 201) {
-        console.log('Account Created: ', response)
+      if (response.status === 200) {
+        console.log('Account Created: ', response.data)
         swal('Your Account Has Been Successfully Created')
         navigate('/login')
       }
@@ -30,13 +30,16 @@ const Signup = () => {
     }
   }
 
-  const { input, handleInputChange, handleSubmit, resetForm } = useForm(sendData, {
-    first_name: '',
-    last_name: '',
-    gender: '',
-    email: '',
-    password: ''
-  })
+  const { input, handleInputChange, handleSubmit, resetForm, handleInputChangeName } = useForm(sendData,
+    {
+      name: {
+        firstname: '',
+        lastname: ''
+      },
+      email: '',
+      username: '',
+      password: ''
+    })
 
   return (
     <>
@@ -51,47 +54,32 @@ const Signup = () => {
           onSubmit={handleSubmit}
         >
           <div className='mb-3'>
-            <label className='form-label' htmlFor='first_name'>First Name</label>
+            <label className='form-label' htmlFor='firstname'>First Name</label>
             <input
               className='form-control'
               type='text'
-              name='first_name'
+              name='firstname'
               placeholder='Your First Name'
-              id='first_name'
-              value={input.first_name}
-              onChange={handleInputChange}
+              id='firstname'
+              value={input.name.firstname}
+              onChange={handleInputChangeName}
               autoComplete='off'
               required
             />
           </div>
           <div className='mb-3'>
-            <label className='form-label' htmlFor='last_name'>Last Name</label>
+            <label className='form-label' htmlFor='lastname'>Last Name</label>
             <input
               className='form-control'
               type='text'
-              name='last_name'
+              name='lastname'
               placeholder='Your Last Name'
-              id='last_name'
-              value={input.last_name}
-              onChange={handleInputChange}
+              id='lastname'
+              value={input.name.lastname}
+              onChange={handleInputChangeName}
               autoComplete='off'
               required
             />
-          </div>
-          <div className='mb-3'>
-            <label className='form-label' htmlFor='gender'>Gender</label>
-            <select
-              className='form-select'
-              name='gender'
-              id='gender'
-              value={input.gender}
-              onChange={handleInputChange}
-              required
-            >
-              <option value=''>Choose your gender</option>
-              <option value='M'>Male</option>
-              <option value='F'>Female</option>
-            </select>
           </div>
           <div className='mb-3'>
             <label className='form-label' htmlFor='email'>Email</label>
@@ -102,6 +90,20 @@ const Signup = () => {
               placeholder='email@mail.com'
               id='email'
               value={input.email}
+              onChange={handleInputChange}
+              autoComplete='off'
+              required
+            />
+          </div>
+          <div className='mb-3'>
+            <label className='form-label' htmlFor='username'>Username</label>
+            <input
+              className='form-control'
+              type='text'
+              name='username'
+              placeholder='Your Username'
+              id='username'
+              value={input.username}
               onChange={handleInputChange}
               autoComplete='off'
               required
@@ -123,8 +125,8 @@ const Signup = () => {
               />
               <button type='button' className='btn btn-secondary' onClick={() => setShowPassword(!showPassword)}>
                 {showPassword
-                  ? <i class='bi bi-eye' />
-                  : <i class='bi bi-eye-slash' />}
+                  ? <i className='bi bi-eye' />
+                  : <i className='bi bi-eye-slash' />}
               </button>
             </span>
           </div>

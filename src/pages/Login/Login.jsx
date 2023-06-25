@@ -34,7 +34,7 @@ const Login = () => {
   }
 
   const { input, handleInputChange, handleSubmit, resetForm } = useForm(sendData, {
-    email: '',
+    username: '',
     password: ''
   })
 
@@ -51,14 +51,14 @@ const Login = () => {
           onSubmit={handleSubmit}
         >
           <div className='mb-3'>
-            <label className='form-label' htmlFor='email'>Email</label>
+            <label className='form-label' htmlFor='username'>Username</label>
             <input
               className='form-control'
-              type='email'
-              name='email'
-              placeholder='email@mail.com'
-              id='email'
-              value={input.email}
+              type='text'
+              name='username'
+              placeholder='Your Username'
+              id='username'
+              value={input.username}
               onChange={handleInputChange}
               autoComplete='off'
               required
@@ -80,8 +80,8 @@ const Login = () => {
               />
               <button type='button' className='btn btn-secondary' onClick={() => setShowPassword(!showPassword)}>
                 {showPassword
-                  ? <i class='bi bi-eye' />
-                  : <i class='bi bi-eye-slash' />}
+                  ? <i className='bi bi-eye' />
+                  : <i className='bi bi-eye-slash' />}
               </button>
             </span>
           </div>

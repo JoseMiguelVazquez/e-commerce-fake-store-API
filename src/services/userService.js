@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-const BASE_URL = 'http://localhost:3000'
+const BASE_URL = 'https://fakestoreapi.com'
 
-const registerUserService = (data) => axios.post(`${BASE_URL}/register`, data)
+const registerUserService = (data) => axios.post(`${BASE_URL}/users`, data)
 
-const loginUserService = (data) => axios.post(`${BASE_URL}/login`, data)
+const loginUserService = (data) => axios.post(`${BASE_URL}/auth/login`, data)
 
 const getSingleUser = (id) => axios.get(`${BASE_URL}/users/${id}`)
 

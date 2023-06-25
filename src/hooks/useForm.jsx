@@ -16,6 +16,12 @@ function useForm (callback, defaults) {
     setInput({ ...input, [name]: value })
   }
 
+  const handleInputChangeName = (event) => {
+    const propName = event.target.name
+    const value = event.target.value
+    setInput({ ...input, name: { [propName]: value } })
+  }
+
   const resetForm = () => {
     setInput(defaults)
   }
@@ -24,7 +30,8 @@ function useForm (callback, defaults) {
     input,
     handleInputChange,
     handleSubmit,
-    resetForm
+    resetForm,
+    handleInputChangeName
   }
 }
 
