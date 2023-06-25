@@ -1,0 +1,33 @@
+.banner-img {
+    height: 190px;
+}
+
+@media screen and (min-width:576px) {
+    .banner-img {
+        height: 280px;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .banner-img {
+        height: 320px;
+    }
+}
+
+@media screen and (min-width:992px) {
+    .banner-img {
+        height: 350px;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .banner-img {
+        height: 380px;
+    }
+}
+
+@media screen and (min-width:1400px) {
+    .banner-img {
+        height: 450px;
+    }
+}

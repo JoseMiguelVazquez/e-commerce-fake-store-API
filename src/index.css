@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Cabin', sans-serif;
+  background-color: rgb(247, 246, 246);
+}
+
+.logo {
+  width: 115px;
+}
+
+.btn-custom, .btn-search {
+  background-color: rgb(237, 163, 21);
+}
+
+.btn-custom:hover, .btn-search:hover {
+  background-color: rgb(240, 180, 69);
+  color: #212529;
+}
+
+.btn-search {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  color: #212529;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
