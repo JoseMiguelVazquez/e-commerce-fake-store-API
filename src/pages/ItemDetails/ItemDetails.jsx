@@ -55,8 +55,8 @@ const ItemDetails = () => {
             <img className='item-image-md' src={item.image} alt='' />
           </div>
           <div className='mb-3'>
-            <h1>{item.product_name}</h1>
-            <p>{item.brand}</p>
+            <h1>{item.title}</h1>
+            {/* <p>{item.brand}</p> */}
             <h5>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(item.price)}</h5>
             <p>{item.description}</p>
             <button

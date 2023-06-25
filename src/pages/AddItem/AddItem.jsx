@@ -17,7 +17,7 @@ const AddItem = () => {
     try {
       const response = await createItem(data)
       if (response.status === 200) {
-        console.log('Product Added: ', response)
+        console.log('Product Added: ', response.data)
         swal('New Item Successfully Created')
         navigate('/')
       }
@@ -29,19 +29,18 @@ const AddItem = () => {
   }
 
   const { input, handleInputChange, handleSubmit, resetForm } = useForm(sendData, {
-    product_name: '',
+    title: '',
     description: '',
-    price: '',
+    price: 0,
     category: '',
-    brand: '',
-    sku: '',
     image: ''
   })
 
   const productCategories = [
-    'Books', 'Movies', 'Music', 'Games', 'Electronics', 'Computers', 'Home', 'Garden', 'Tools',
-    'Grocery', 'Health', 'Beauty', 'Toys', 'Kids', 'Baby', 'Clothing', 'Shoes', 'Jewelery',
-    'Sports', 'Outdoors', 'Automotive', 'Industrial'
+    'electronics',
+    'jewelery',
+    "men's clothing",
+    "women's clothing"
   ]
 
   return (
@@ -61,10 +60,10 @@ const AddItem = () => {
             <input
               className='form-control'
               type='text'
-              name='product_name'
+              name='title'
               placeholder='Name of the new product'
-              id='product_name'
-              value={input.product_name}
+              id='title'
+              value={input.title}
               onChange={handleInputChange}
               required
             />
@@ -87,6 +86,7 @@ const AddItem = () => {
             <input
               className='form-control'
               type='number'
+              step='0.01'
               name='price'
               id='price'
               min='0'
@@ -111,32 +111,6 @@ const AddItem = () => {
                 <option key={category} value={category}>{category}</option>
               ))}
             </select>
-          </div>
-          <div className='mb-3'>
-            <label className='form-label' htmlFor='brand'>Brand</label>
-            <input
-              className='form-control'
-              type='text'
-              name='brand'
-              placeholder='Brand of the new product'
-              id='brand'
-              value={input.brand}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className='mb-3'>
-            <label className='form-label' htmlFor='sku'>SKU</label>
-            <input
-              className='form-control'
-              type='text'
-              name='sku'
-              placeholder='SKU of the new product'
-              id='sku'
-              value={input.sku}
-              onChange={handleInputChange}
-              required
-            />
           </div>
           <div className='mb-3'>
             <label className='form-label' htmlFor='image'>Image URL</label>
