@@ -46,7 +46,7 @@ const Navbar = () => {
         setSearchItems(response.data.filter(item => {
           if (searchTerm === '') {
             return item
-          } else if (item.product_name.toLowerCase().includes(searchTerm.toLowerCase())) {
+          } else if (item.title.toLowerCase().includes(searchTerm.toLowerCase())) {
             return item
           }
           return false

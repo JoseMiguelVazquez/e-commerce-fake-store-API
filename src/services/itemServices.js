@@ -13,7 +13,7 @@ const BASE_URL = 'https://fakestoreapi.com'
 // })
 
 const getSingleItem = (id) => axios.get(`${BASE_URL}/products/${id}`)
-const getAllItems = () => axios.get(`${BASE_URL}/products?limit=20`)
+const getAllItems = () => axios.get(`${BASE_URL}/products`)
 const createItem = (data) => axios.post(`${BASE_URL}/products`, data)
 
 export {

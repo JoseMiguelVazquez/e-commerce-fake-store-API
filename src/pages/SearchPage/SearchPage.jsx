@@ -19,7 +19,7 @@ const SearchPage = () => {
           setSearchItems(response.data.filter(item => {
             if (query === '') {
               return item
-            } else if (item.product_name.toLowerCase().includes(query.toLowerCase())) {
+            } else if (item.title.toLowerCase().includes(query.toLowerCase())) {
               return item
             }
             return false
@@ -47,7 +47,7 @@ const SearchPage = () => {
               key={item.id}
               id={item.id}
               imageUrl={item.image}
-              name={item.product_name}
+              name={item.title}
               price={item.price}
             />
           ))}
