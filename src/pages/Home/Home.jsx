@@ -29,7 +29,7 @@ const Home = () => {
 
   return (
     <>
-      <div id='carouselAutoplaying' className='carousel slide' data-bs-ride='carousel'>
+      <div id='carouselAutoplaying' className='container-xl carousel slide px-0' data-bs-ride='carousel'>
         <div className='carousel-inner'>
           <div className='carousel-item active'>
             <img src={bannerImage} className='d-block w-100 banner-img' alt='Banner 1' />
@@ -53,7 +53,7 @@ const Home = () => {
           <span className='visually-hidden'>Next</span>
         </button>
       </div>
-      <div className='container-fluid pt-4'>
+      <div className='container-xl pt-4'>
         <h3>Only the best products</h3>
         <div className='row d-flex justify-content-center'>
           {items.map((item) => (

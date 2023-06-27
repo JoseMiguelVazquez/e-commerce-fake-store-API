@@ -11,7 +11,7 @@ const ItemCard = ({ id, imageUrl, name, price }) => {
         className='text-decoration-none text-dark d-flex justify-content-center link-card-container'
       >
         <div className='card card-container'>
-          <div className='card-img-container d-flex justify-content-center p-2 mt-2'>
+          <div className='card-img-container d-flex justify-content-center align-items-center p-2 mt-2'>
             <img
               className='item-image-sm'
               src={imageUrl || imageNotAvailable}
@@ -19,8 +19,10 @@ const ItemCard = ({ id, imageUrl, name, price }) => {
             />
           </div>
           <div className='card-text-container d-flex flex-column justify-content-center px-3'>
-            <h6>{name}</h6>
-            <p>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(price)}</p>
+            <div className='card-text-title-container'>
+              <h6>{name}</h6>
+            </div>
+            <p className='price-text'>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(price)}</p>
           </div>
         </div>
       </Link>
