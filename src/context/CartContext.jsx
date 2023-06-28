@@ -9,7 +9,7 @@ function CartProvider (props) {
   const [cartItemsNumber, setCartItemsNumber] = useState(0)
 
   function calculateTotal () {
-    setCartTotal(shoppingCart.reduce((accumulator, item) => accumulator + (parseInt(item.item.price) * item.quantity), 0))
+    setCartTotal(shoppingCart.reduce((accumulator, item) => accumulator + (item.item.price * item.quantity), 0))
   }
 
   function calculateItemNumber () {

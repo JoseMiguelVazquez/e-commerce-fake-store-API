@@ -48,14 +48,14 @@ const ShoppingCart = ({ show }) => {
                 <img className='cart-product-img' src={item.item.image} alt='' />
               </div>
               <div className='cart-product-info'>
-                <h6 className='m-0 fw-bold'>{item.item.product_name}</h6>
-                <p className='m-0'>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(parseInt(item.item.price))}</p>
+                <h6 className='m-0 fw-bold'>{item.item.title}</h6>
+                <p className='m-0'>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(item.item.price)}</p>
                 <div className='m-0 d-flex align-items-center'>
                   <i className='bi bi-dash mx-1' onClick={() => handleDecreaseQuantity(index)} />
                   <p className='m-0'>{item.quantity}</p>
                   <i className='bi bi-plus mx-1' onClick={() => handleIncreaseQuantity(index)} />
                 </div>
-                <p className='m-0'>Total: {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(parseInt(item.item.price) * item.quantity)}</p>
+                <p className='m-0'>Total: {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(item.item.price * item.quantity)}</p>
                 <i className='bi bi-trash3 ms-3' onClick={() => handleDeleteProduct(index)} />
               </div>
             </li>
