@@ -91,6 +91,11 @@ const Login = () => {
           <Link className='text-dark' to='/signup'>Not a registered user? Sign Up!</Link>
         </form>
       </div>
+      <div className='position-absolute start-50 top-50 translate-middle card p-4 mt-5'>
+        <h3>Test User: </h3>
+        <p>User: johnd</p>
+        <p>Pass: m38rmF$</p>
+      </div>
       <div className='white-space-login' />
     </>
   )

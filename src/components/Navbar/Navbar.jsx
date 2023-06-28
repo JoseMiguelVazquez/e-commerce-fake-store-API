@@ -83,11 +83,19 @@ const Navbar = () => {
               <NavLink className='nav-link' to='/about'>About</NavLink>
             </li>
             {
-              userPayload?.role === 'ADMIN' &&
+              // TO HAVE WITH ADMIN ROLES
+              // userPayload?.role === 'ADMIN' &&
+              //   <li className='nav-item'>
+              //     <NavLink className='nav-link' to='/add-item'>New Item</NavLink>
+              //   </li>
+            }
+            {
+              isAuth &&
                 <li className='nav-item'>
                   <NavLink className='nav-link' to='/add-item'>New Item</NavLink>
                 </li>
             }
+
           </ul>
           <form className='d-flex' role='search' onSubmit={onSearch}>
             <span className='input-group'>
