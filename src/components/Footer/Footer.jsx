@@ -16,7 +16,7 @@ const Footer = () => {
             target='_blank'
             href='https://github.com/JoseMiguelVazquez'
             rel='noreferrer'
-          >José Miguel Vázquez E.
+          > José Miguel Vázquez E.
           </a>
         </p>
       </div>
