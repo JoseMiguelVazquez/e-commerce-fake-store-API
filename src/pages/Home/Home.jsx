@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-indent */
 import React, { useEffect, useState } from 'react'
 import { useSearchContext } from '@/context/SearchContext'
 import ItemCard from '@/components/ItemCard'
@@ -11,6 +12,7 @@ import './home.css'
 const Home = () => {
   const { setSearchTerm } = useSearchContext()
   const [items, setItems] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     setSearchTerm('')
@@ -19,6 +21,7 @@ const Home = () => {
         const response = await getAllItems()
         if (response.status === 200) {
           setItems(response.data)
+          setLoading(false)
         }
       } catch (error) {
         console.log('Ocurrió un error: ' + error.message)
@@ -53,20 +56,28 @@ const Home = () => {
           <span className='visually-hidden'>Next</span>
         </button>
       </div>
-      <div className='container-xl pt-4'>
-        <h3>Only the best products</h3>
-        <div className='row d-flex justify-content-center'>
-          {items.map((item) => (
-            <ItemCard
-              key={item.id}
-              id={item.id}
-              imageUrl={item.image}
-              name={item.title}
-              price={item.price}
-            />
-          ))}
-        </div>
-      </div>
+      {
+        loading
+          ? <div className='home-loading-div d-flex align-items-center justify-content-center'>
+              <div className='spinner-border' role='status'>
+                <span className='visually-hidden'>Loading...</span>
+              </div>
+            </div>
+          : <div className='container-xl pt-4'>
+              <h3>Only the best products</h3>
+              <div className='row d-flex justify-content-center'>
+                {items.map((item) => (
+                  <ItemCard
+                    key={item.id}
+                    id={item.id}
+                    imageUrl={item.image}
+                    name={item.title}
+                    price={item.price}
+                  />
+                ))}
+              </div>
+            </div>
+      }
     </>
   )
 }

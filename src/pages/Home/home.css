@@ -2,6 +2,11 @@
     height: 190px;
 }
 
+.home-loading-div {
+    min-width: 100%;
+    min-height: 600px;
+}
+
 @media screen and (min-width:576px) {
     .banner-img {
         height: 280px;

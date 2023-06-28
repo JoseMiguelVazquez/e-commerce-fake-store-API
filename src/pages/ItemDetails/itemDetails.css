@@ -1,3 +1,8 @@
+.loading-div {
+    min-width: 100%;
+    min-height: 300px;
+}
+
 .item-image-md {
     max-width: 250px;
     max-height: 250px;

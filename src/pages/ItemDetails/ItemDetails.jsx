@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-indent */
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { getSingleItem } from '@/services/itemServices'
@@ -8,6 +9,7 @@ import './itemDetails.css'
 
 const ItemDetails = () => {
   const [item, setItem] = useState({})
+  const [loading, setLoading] = useState(true)
   const { id } = useParams()
   const navigate = useNavigate()
   const { isAuth } = useAuthContext()
@@ -21,6 +23,7 @@ const ItemDetails = () => {
         const response = await getSingleItem(id)
         if (response.status === 200) {
           setItem(response.data)
+          setLoading(false)
         }
       } catch (error) {
         console.log('Ocurrió un error: ' + error.message)
@@ -50,24 +53,30 @@ const ItemDetails = () => {
         <div>
           <button className='btn' onClick={() => navigate(-1)}> &lt; Back</button>
         </div>
-        <div className='d-flex flex-column flex-sm-row mt-3'>
-          <div className='px-3 mb-3 d-flex align-items-center'>
-            <img className='item-image-md' src={item.image} alt='' />
-          </div>
-          <div className='mb-3'>
-            <h1>{item.title}</h1>
-            {/* <p>{item.brand}</p> */}
-            <h5>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(item.price)}</h5>
-            <p>{item.description}</p>
-            <button
-              className='btn btn-custom me-3'
-              disabled={!isAuth}
-              onClick={handleAddCart}
-            >Add to Cart
-            </button>
-            {!isAuth && <Link to='/login' className='text-dark'>Log in to Buy</Link>}
-          </div>
-        </div>
+        {loading
+          ? <div className='loading-div d-flex align-items-center justify-content-center'>
+              <div className='spinner-border' role='status'>
+                <span className='visually-hidden'>Loading...</span>
+              </div>
+            </div>
+          : <div className='d-flex flex-column flex-sm-row mt-3'>
+              <div className='px-3 mb-3 d-flex align-items-center'>
+                <img className='item-image-md' src={item.image} alt='' />
+              </div>
+              <div className='mb-3'>
+                <h1>{item.title}</h1>
+                <p>{item.category}</p>
+                <h5 className='price-text'>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(item.price)}</h5>
+                <p>{item.description}</p>
+                <button
+                  className='btn btn-custom me-3'
+                  disabled={!isAuth}
+                  onClick={handleAddCart}
+                >Add to Cart
+                </button>
+                {!isAuth && <Link to='/login' className='text-dark'>Log in to Buy</Link>}
+              </div>
+            </div>}
         <div>
           <hr />
           <h5>Description</h5>
